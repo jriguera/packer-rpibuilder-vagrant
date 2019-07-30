@@ -1,0 +1,101 @@
+{
+  "_comment": "Debian Buster CD install (netboot)",
+  "_comment": "https://www.debian.org/releases/buster/debian-installer/",
+  "_comment": "to get the links and the MD5 checksum",
+  "variables": {
+    "vm_description": "Debian Buster 32 bit for Raspberry PI builder",
+    "vm_version": "1",
+    "vm_name": "rpibuilder",
+    "os_name": "buster",
+    "os_version": "10.0",
+    "rpi_username": "rpibuilder",
+    "rpi_user": "pi",
+    "rpi_password": "pi",
+    "disk_size": "20000",
+    "memory": "4096",
+    "cpus": "2",
+    "headless": "false",
+    "upgrade": "yes",
+    "iso_url": "https://cdimage.debian.org/debian-cd/current/i386/iso-cd/debian-10.0.0-i386-netinst.iso",
+    "iso_checksum": "47ec08425c8d7ce12999b776e483a67a",
+    "iso_checksum_type": "",
+    "preseed": "debian10.preseed",
+    "proxy": ""
+  },
+  "builders": [
+    {
+       "type": "virtualbox-iso",
+       "output_directory": "{{user `os_name`}}-{{user `os_version`}}",
+       "vm_name": "{{user `vm_name`}}-{{user `vm_version`}}",
+       "cpus": "{{user `cpus`}}",
+       "disk_size": "{{user `disk_size`}}",
+       "memory": "{{user `memory`}}",
+       "headless": "{{user `headless`}}",
+       "guest_os_type": "Debian",
+       "export_opts": ["--manifest", "--vsys", "0", "--description", "{{user `vm_description`}}", "--version", "{{user `vm_version`}}" ],
+       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+       "hard_drive_interface": "scsi",
+       "hard_drive_nonrotational" : "true",
+       "hard_drive_discard": "true",
+       "http_directory": "http",
+       "iso_urls": [
+            "iso/{{ user `os_name` }}-{{user `os_version`}}.iso",
+            "{{ user `iso_url` }}"
+       ],
+       "iso_checksum": "{{user `iso_checksum`}}",
+       "iso_checksum_type": "{{user `iso_checksum_type`}}",
+       "ssh_username": "vagrant",
+       "ssh_password": "vagrant",
+       "ssh_wait_timeout": "2000s",
+       "shutdown_command": "sudo shutdown -P now",
+       "boot_wait": "3s",
+       "boot_command": [
+            "<esc><wait>",
+            "install auto=true url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `preseed` }} mirror/http/proxy={{user `proxy`}}  ",
+            "hostname={{ user `vm_name` }} domain=local",
+            "<enter>"
+       ]
+    }
+  ],
+  "provisioners": [
+    {
+       "type": "shell",
+       "execute_command": "{{ .Vars }} sudo -E bash {{ .Path }}",
+       "environment_vars": [
+         "RPI_USER={{user `rpi_user`}}",
+         "RPI_PASS={{user `rpi_password`}}",
+         "RPI_NAME={{user `rpi_username`}}",
+         "RPIBUILDER_VERSION={{user `vm_version`}}",
+         "RPIBUILDER_UPGRADE={{user `upgrade`}}",
+         "DEBIAN_FRONTEND=noninteractive",
+         "DEBCONF_NONINTERACTIVE_SEEN=true",
+         "HTTP_SERVER_URL=http://{{ .HTTPIP }}:{{ .HTTPPort }}/"
+       ],
+       "scripts": [
+          "scripts/update.sh",
+          "scripts/packages.sh",
+          "scripts/floppy.sh",
+          "scripts/vagrant.sh",
+          "scripts/rpi.sh",
+          "scripts/vbox.sh",
+          "scripts/grub.sh",
+          "scripts/cleanup.sh",
+          "scripts/minimize.sh"
+       ]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "output": "builds/{{user `os_name`}}-{{user `os_version`}}_{{user `vm_name`}}-{{user `vm_version`}}_{{ .Provider }}.box",
+        "type": "vagrant"
+      },
+      {
+        "type": "vagrant-cloud",
+        "box_tag": "jriguera/{{user `vm_name`}}-{{user `os_name`}}-{{user `os_version`}}-i386",
+        "version": "{{user `vm_version`}}"
+      }
+    ]
+  ]
+}
+
