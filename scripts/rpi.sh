@@ -23,6 +23,9 @@ for package in ${INSTALL_LIST}; do
 done
 echo "mtools_skip_check=1" >> /etc/mtools.conf
 
+echo "# Load loop module" > /etc/modules-load.d/loop.conf
+echo "loop" >> /etc/modules-load.d/loop.conf
+
 # RPI user
 echo "* Creating RPI user ..."
 adduser --firstuid 1000 --gecos "${RPI_NAME}" --disabled-password ${RPI_USER}
