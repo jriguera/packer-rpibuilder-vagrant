@@ -5,6 +5,8 @@ Packer builder for RPI Vagrant Builder box for Virtualbox.
 The purpose is create a Vagrant Virtualbox template with all dependencies installed ready to create Raspbian images with https://github.com/RPi-Distro/pi-gen
 Because of qemu issues identified in https://github.com/RPi-Distro/pi-gen/issues/271 , this vm is based 32bits Debian Buster (i686)
 
+It also installs `apt-cacher-ng` in order to make it possible to cache downloaded deb packages via `0.0.0.0:3142`
+
 # Run
 
 `./build.sh`
