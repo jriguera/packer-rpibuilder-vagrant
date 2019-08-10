@@ -9,8 +9,11 @@ Because of qemu issues identified in https://github.com/RPi-Distro/pi-gen/issues
 
 `./build.sh`
 
-When the vm is built, it will be uploaded to vagrant cloud and it will be exported as Vagrant box to `builds` folder, 
-you can alreayd test it with `vagrant up` (have a look at the `vagrantfile`).
+When the vm is built, it will be exported as Vagrant box to `builds` folder, 
+you can already test it direclty with `vagrant up` (have a look at the `vagrantfile`).
+
+The build script can also upload the vm to VagrantCloud if `upload` argument is provided
+and a proper enviornment variable is defined.
 
 For usage have a look to https://github.com/jriguera/raspbian-cloud 
 
