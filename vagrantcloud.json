@@ -1,0 +1,5 @@
+{
+  "type": "vagrant-cloud",
+  "box_tag": "jriguera/{{user `vm_name`}}-{{user `os_name`}}-{{user `os_version`}}-i386",
+  "version": "{{user `vm_version`}}"
+}
