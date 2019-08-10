@@ -22,7 +22,9 @@ echo "* Installing packages ..."
 for package in ${INSTALL_LIST}; do
 	apt-get install -y ${package}
 done
-echo "mtools_skip_check=1" >> /etc/mtools.conf
+echo 'mtools_skip_check=1' >> /etc/mtools.conf
+
+echo 'PassThroughPattern: .*' >> /etc/apt-cacher-ng/zz_debconf.conf
 
 echo "# Load loop module" > /etc/modules-load.d/loop.conf
 echo "loop" >> /etc/modules-load.d/loop.conf
