@@ -7,7 +7,7 @@
     "vm_version": "1",
     "vm_name": "rpibuilder",
     "os_name": "buster",
-    "os_version": "10.0",
+    "os_version": "10.1",
     "rpi_username": "rpibuilder",
     "rpi_user": "pi",
     "rpi_password": "pi",
@@ -16,8 +16,8 @@
     "cpus": "2",
     "headless": "false",
     "upgrade": "yes",
-    "iso_url": "https://cdimage.debian.org/debian-cd/current/i386/iso-cd/debian-10.0.0-i386-netinst.iso",
-    "iso_checksum": "47ec08425c8d7ce12999b776e483a67a",
+    "iso_url": "https://cdimage.debian.org/debian-cd/current/i386/iso-cd/debian-10.1.0-i386-netinst.iso",
+    "iso_checksum": "0727d424332786f0fa406bac43ed6f08",
     "iso_checksum_type": "",
     "preseed": "debian10.preseed",
     "proxy": ""
@@ -93,4 +93,3 @@
     ]
   ]
 }
-
