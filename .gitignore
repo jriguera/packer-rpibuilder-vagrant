@@ -5,8 +5,11 @@ packer_cache/
 builds/
 *.box
 packerbuild-*.json
+buster-*/
 
 # Vagrant
 .vagrant/
+# Createt via template
+Vagrantfile
 # Log files (if you are creating logs in debug mode, uncomment this)
 # *.log
