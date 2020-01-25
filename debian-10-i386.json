@@ -16,8 +16,8 @@
     "cpus": "2",
     "headless": "false",
     "upgrade": "yes",
-    "iso_url": "https://cdimage.debian.org/debian-cd/current/i386/iso-cd/debian-10.1.0-i386-netinst.iso",
-    "iso_checksum": "0727d424332786f0fa406bac43ed6f08",
+    "iso_url": "https://cdimage.debian.org/debian-cd/current/i386/iso-cd/debian-10.2.0-i386-netinst.iso",
+    "iso_checksum": "883d0ca91d2f21ce0a0e0e481f97bf73d50a0232f467e5200aaea79849fc74fd",
     "iso_checksum_type": "",
     "preseed": "debian10.preseed",
     "proxy": ""
