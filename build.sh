@@ -3,7 +3,7 @@
 
 PACKER_DEFINITION="debian-10-i386.json"
 PACKER_VAGRANTCLOUD_POST="vagrantcloud.json"
-OS_VERSION="10.1"
+OS_VERSION="10.2"
 
 RE_VERSION_NUMBER='^[0-9]+([0-9\.]*[0-9]+)*$'
 [ -z "$DEBUG" ] || set -x
