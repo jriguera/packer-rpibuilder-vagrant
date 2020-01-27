@@ -12,14 +12,14 @@ set -e
 
 if ! [ -x "$(command -v jq)" ]
 then
-  echo 'ERROR: Please install jq: https://github.com/stedolan/jq!'
-  exit 1
+    echo 'ERROR: Please install jq: https://github.com/stedolan/jq!'
+    exit 1
 fi
 
 if ! [ -x "$(command -v packer)" ]
 then
-  echo 'ERROR: Please install packer: https://www.packer.io/!'
-  exit 1
+    echo 'ERROR: Please install packer: https://www.packer.io/!'
+    exit 1
 fi
 
 packerjson=$(echo "packerbuild-$$.json")
@@ -69,10 +69,11 @@ fi
 
 if [ ! -d iso ]
 then
-	mkdir iso
+    mkdir iso
 fi
 cp Vagrantfile.template Vagrantfile
 sed -i -e "s/{{VERSION}}/$version/g" Vagrantfile
 sed -i -e "s/{{OS_VERSION}}/$OS_VERSION/g" Vagrantfile
 echo "> Creating vagrant box version $version ..."
 packer build -var "vm_version=$version" "${packerjson}"
+
