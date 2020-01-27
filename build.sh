@@ -72,7 +72,7 @@ then
 	mkdir iso
 fi
 cp Vagrantfile.template Vagrantfile
-sed -i "" -e "s/{{VERSION}}/$version/g" Vagrantfile
-sed -i "" -e "s/{{OS_VERSION}}/$OS_VERSION/g" Vagrantfile
+sed -i -e "s/{{VERSION}}/$version/g" Vagrantfile
+sed -i -e "s/{{OS_VERSION}}/$OS_VERSION/g" Vagrantfile
 echo "> Creating vagrant box version $version ..."
 packer build -var "vm_version=$version" "${packerjson}"
