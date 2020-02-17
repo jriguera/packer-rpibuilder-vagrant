@@ -4,7 +4,7 @@ INSTALL_LIST=$(cat <<-EOF | grep -v '#' | xargs
 	# List of packages to install
 	acpid coreutils kmod
 	htop iotop tcpdump ethtool lsscsi lshw iftop nload pciutils strace parted lsof
-	curl wget bsdtar rsync zip unzip vim-nox nano xz-utils
+	curl wget bsdtar rsync zip unzip vim-nox nano xz-utils bc
 EOF
 )
 
