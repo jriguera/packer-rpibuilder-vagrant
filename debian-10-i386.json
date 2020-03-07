@@ -11,7 +11,7 @@
     "rpi_username": "rpibuilder",
     "rpi_user": "pi",
     "rpi_password": "pi",
-    "disk_size": "20000",
+    "disk_size": "25000",
     "memory": "4096",
     "cpus": "2",
     "headless": "false",
