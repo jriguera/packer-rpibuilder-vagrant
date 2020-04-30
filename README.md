@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :rpigen do |rpigen|
       # Every Vagrant virtual environment requires a box to build off of.
-      rpigen.vm.box = "jriguera/rpibuilder-buster-10.1-i386"
+      rpigen.vm.box = "jriguera/rpibuilder-buster-10.2-i386"
       rpigen.vm.provision "shell" do |s|
         s.inline = $run
         s.args = "#{ENV['WORK_DIR']}"
@@ -69,6 +69,8 @@ If the process fails, you can run again with `vagrant provision`. `vagrant destr
 will delete the vm and its contents.
 
 For more usage options, have a look to https://github.com/jriguera/raspbian-cloud 
+
+**Please make sure you are targeting the correct rpibuilder version https://app.vagrantup.com/boxes/search?utf8=%E2%9C%93&sort=downloads&provider=&q=rpibuilder**
 
 
 # Author
