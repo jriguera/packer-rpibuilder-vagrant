@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :rpigen do |rpigen|
       # Every Vagrant virtual environment requires a box to build off of.
-      rpigen.vm.box = "jriguera/rpibuilder-buster-10.2-i386"
+      rpigen.vm.box = "jriguera/rpibuilder-buster-10.4-i386"
       rpigen.vm.provision "shell" do |s|
         s.inline = $run
         s.args = "#{ENV['WORK_DIR']}"
